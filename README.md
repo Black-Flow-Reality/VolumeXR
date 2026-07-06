@@ -143,13 +143,113 @@ git push origin main
 
 ```
 
+---
+
+## 🌿 Advanced Workflow: Branching & Merging
+
+To prevent multiple people from breaking the main game code at the same time, we use **branches**. Think of a branch as a parallel copy of the project where you can safely build features without affecting the `main` game.
+
+### 1. Create and Switch to a New Branch
+
+Before starting a new feature (e.g., UI building or adding 3D model processing), create a brand new branch named after your feature:
+
+```bash
+# Create and instantly switch to your new branch:
+git checkout -b feature-ui-layout
+
+```
+
+### 2. Add Progress to Your Branch
+
+Work normally in Godot or Blender. When you are ready to save snapshots to this specific branch, use the exact same sync process:
+
+```bash
+git add .
+git commit -m "Designed the main UI panel background"
+
+```
+
+To share this branch with the team on GitHub for the first time, run:
+
+```bash
+git push origin feature-ui-layout
+
+```
+
+### 3. Requesting to Merge Your Work into Main (Pull Request) (IMPORTANT)
+
+When your feature is fully complete, working, and tested, you need to ask the team to merge your branch back into the `main` branch. This is called a **Pull Request (PR)**.
+
+You can quickly create a PR directly using the GitHub CLI:
+
+```bash
+gh pr create --title "Add completed UI interface" --body "This adds the complete functional UI canvas layer for object placement."
+
+```
+
+*Alternatively, you can go to the project repository on GitHub.com in your web browser, where you will see a green button that says **"Compare & pull request"**.*
+
+### 4. Merging Your Branch into Main
+
+Once the team reviews your code and approves the Pull Request, it needs to be merged into `main`.
+
+**Option A: Merging via Terminal**
+If you prefer to manually merge it locally yourself:
+
+1. Switch back to the main branch:
+```bash
+git checkout main
+
+```
 
 
+2. Make sure your local main is up to date:
+```bash
+git pull origin main
+
+```
+
+
+3. Merge your feature branch into main:
+```bash
+git merge feature-ui-layout
+
+```
+
+
+4. Push the newly updated main back up to GitHub:
+```bash
+git push origin main
+
+```
+
+
+
+**Option B: Merging via GitHub Web**
+Simply click the big green **"Merge pull request"** button on the GitHub PR webpage. This is the preferred method for the team!
+
+### 5. Remove the Finished Branch
+
+Once a feature is safely merged into `main`, clean up the branch so the workspace stays tidy.
+
+* **Delete the local branch** on your computer:
+```bash
+git branch -d feature-ui-layout
+
+```
+
+
+* **Delete the remote branch** on GitHub:
+```bash
+git push origin --delete feature-ui-layout
+
+```
+
+---
 ### ⚠️ Quick Tip for Godot Engine
 
 Before you run `git add` or `git commit`, make sure to **Save All Scenes** in the Godot Editor (`Ctrl + Shift + S` or `Cmd + Shift + S`). Godot dynamically updates `.tscn` text files when you save, so committing without saving might leave out your actual scene modifications!
 
 
-
-# Important  Notes:
+# Important  Notes
 ### Before pushing, create a branch and ask other members to avoid `PUSH CONFLICT`
