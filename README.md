@@ -1,8 +1,4 @@
-Here is your updated `README.md`. I have appended a clear, beginner-friendly **Git & GitHub Guide** directly into the document. It breaks down the configuration steps and the sync workflow in a logical sequence, ensuring your interns can follow along smoothly.
 
----
-
-```markdown
 # VolumeXR
 
 #### Assignees: Clark + Albert
@@ -135,7 +131,3 @@ git push origin main
 ### ⚠️ Quick Tip for Godot Engine
 
 Before you run `git add` or `git commit`, make sure to **Save All Scenes** in the Godot Editor (`Ctrl + Shift + S` or `Cmd + Shift + S`). Godot dynamically updates `.tscn` text files when you save, so committing without saving might leave out your actual scene modifications!
-
-```
-
-```
