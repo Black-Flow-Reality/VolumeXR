@@ -40,7 +40,6 @@ Before you make any changes, you need to tell Git who you are. This ensures your
    git config --global user.name "Your First and Last Name"
    git config --global user.email "your_email@example.com"
 
-```
 
 *Note: Use the same email address you used to create your GitHub account.*
 
@@ -48,33 +47,42 @@ Before you make any changes, you need to tell Git who you are. This ensures your
 
 Instead of messing with complicated Personal Access Tokens (PATs) or SSH keys, we use the official **GitHub CLI** tool to log in securely.
 
-1. Make sure you have downloaded and installed the GitHub CLI (`gh`).
+1. Make sure you have downloaded and installed the GitHub CLI (`gh`). (https://cli.github.com/)
 2. In your terminal, type the following command and press Enter:
 ```bash
 gh auth login
 
 ```
 
-
 3. Use your arrow keys and Enter key to answer the prompts exactly like this:
 * **What account do you want to log into?** `GitHub.com`
 * **What is your preferred protocol for Git operations on this host?** `HTTPS`
 * **Authenticate Git with your GitHub credentials?** `Yes`
 * **How would you like to authenticate GitHub CLI?** `Login with a web browser`
-
-
 4. A **one-time activation code** (8 characters) will appear in your terminal. Copy it.
 5. Press **Enter** to open your browser automatically. Paste the code into the GitHub prompt, then click **Authorize github**.
 
 Once the terminal says you are logged in, you are good to go!
 
----
+### Step 3: Configure the folder
+*BEFORE YOU CONFIGURE THE FOLDER, MAKE SURE YOU KNOW WHERE YOU SAVE YOUR PROJECT
 
-## 🔄 Daily Workflow: Syncing Your Code
+#### 1. Go to the folder.
+```bash
+cd "To you location"
 
-When working with Godot scenes, scripts, or Blender assets, you need to constantly pull your teammates' changes and push your own. Here is the daily workflow order:
+```
+#### 2. Create your git config
+```bash
+git init
 
-### 1. Fetch & Pull (Do this BEFORE you start working)
+```
+#### 3. Link your current project folder to the repository.
+```bash
+git remote add origin "https://github.com/your-repository.git" # IT MUST BE .git in the end of the URL
+
+```
+#### 4. Fetch & Pull (Do this BEFORE you start working)
 
 Always get the latest code from your team before you begin editing files. This prevents merge conflicts later.
 
@@ -84,7 +92,6 @@ git fetch origin
 
 ```
 
-
 * **`git pull`** downloads those changes and merges them directly into your local workspace:
 ```bash
 git pull origin main
@@ -92,8 +99,18 @@ git pull origin main
 ```
 
 
+---
 
-### 2. Add & Commit (Do this when you finish a task)
+## 🔄 Daily Workflow: Syncing Your Code
+
+When working with Godot scenes, scripts, or Blender assets, you need to constantly pull your teammates' changes and push your own. Here is the daily workflow order:
+
+
+
+
+
+
+### 1. Add & Commit (Do this when you finish a task)
 
 Once you have created or edited a file (like designing a UI element or adding a 3D model), save a "snapshot" of your progress locally.
 
@@ -116,7 +133,7 @@ git commit -m "Add basic UI interface for asset selection"
 
 
 
-### 3. Push (Do this to share your work)
+### 2. Push (Do this to share your work)
 
 Right now, your commit only exists on your own computer. To upload it to GitHub so Clark, Albert, and the rest of the team can see it, use push.
 
@@ -131,3 +148,8 @@ git push origin main
 ### ⚠️ Quick Tip for Godot Engine
 
 Before you run `git add` or `git commit`, make sure to **Save All Scenes** in the Godot Editor (`Ctrl + Shift + S` or `Cmd + Shift + S`). Godot dynamically updates `.tscn` text files when you save, so committing without saving might leave out your actual scene modifications!
+
+
+
+# Important  Notes:
+### Before pushing, create a branch and ask other members to avoid `PUSH CONFLICT`
