@@ -69,7 +69,7 @@ Once the terminal says you are logged in, you are good to go!
 
 #### 1. Go to the folder.
 ```bash
-cd "To you location"
+cd "To your location"
 
 ```
 #### 2. Create your git config
